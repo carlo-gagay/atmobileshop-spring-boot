@@ -49,6 +49,7 @@ public class ProductPrice implements Serializable {
     }
 
     public ProductPrice(double orig, double srp, Product product) {
+        super();
         this.orig = orig;
         this.srp = srp;
         this.product = product;
@@ -72,5 +73,13 @@ public class ProductPrice implements Serializable {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public void setOrig(double orig) {
+        this.orig = orig;
+    }
+
+    public void setSrp(double srp) {
+        this.srp = srp;
     }
 }

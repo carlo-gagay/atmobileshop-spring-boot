@@ -24,8 +24,8 @@ public class Product implements Serializable {
     @Column(columnDefinition = "serial")
     private Long id;
 
-    @Column(name = "name", length = 80, nullable = false, unique = true)
-    private String name;
+    @Column(name = "title", length = 80, nullable = false, unique = true)
+    private String title;
 
     @Column(name = "description", nullable = true, unique = true)
     private String description;
@@ -34,19 +34,23 @@ public class Product implements Serializable {
     private int quantity;
 
     @Temporal(TemporalType.DATE)
-    private Date createdAt;
+    private Date created_at;
+
+    @Temporal(TemporalType.DATE)
+    private Date updated_at;
 
     @OneToOne(mappedBy = "product")
     @JsonBackReference
     private ProductPrice price;
 
     public Product() {
-        this.createdAt = new Date();
+        this.created_at = new Date();
+        this.updated_at = new Date();
     }
 
-    public Product(String name, String description, int quantity) {
+    public Product(String title, String description, int quantity) {
         super();
-        this.name = name;
+        this.title = title;
         this.description = description;
         this.quantity = quantity;
     }
@@ -55,8 +59,8 @@ public class Product implements Serializable {
         return this.id;
     }
 
-    public String getName() {
-        return this.name;
+    public String getTitle() {
+        return this.title;
     }
 
     public String getDescription() {
@@ -68,7 +72,11 @@ public class Product implements Serializable {
     }
 
     public Date getCreatedAt() {
-        return this.createdAt;
+        return this.created_at;
+    }
+
+    public Date getUpdatedAt() {
+        return this.updated_at;
     }
 
     public ProductPrice getPrice() {
@@ -77,5 +85,25 @@ public class Product implements Serializable {
 
     public void setPrice(ProductPrice price) {
         this.price = price;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setCreatedAt(Date created_at) {
+        this.created_at = created_at;
+    }
+
+    public void setUpdatedAt(Date updated_at) {
+        this.updated_at = updated_at;
     }
 }
