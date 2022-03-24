@@ -15,8 +15,4 @@ public class ProductSales implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int quantity;
-    private double discount;
-
-    private ProductPrice price;
 }
